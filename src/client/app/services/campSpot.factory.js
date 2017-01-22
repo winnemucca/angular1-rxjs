@@ -1,5 +1,6 @@
 (function() {
 	'use strict';
+
 	angular
 		.module('campSpot.services.campList',[])
 		.factory('campListFactory', campListFactory);
@@ -7,27 +8,23 @@
 		campListFactory.$inject = ['$http', '$log'];
 
 		function campListFactory($http, $log) {
-			var url = './src/client/app/Services/campData.json';
-
 			return {
 				getCampList: getCampList
 			}
 
 			function getCampList() {
-
-				return $http.get(url, {catch: true})
+				var url = './src/client/app/Services/campData.json';
+				return $http.get(url)
 					.then(getCampListComplete)
 					.catch(getCampListFailed);
 
-					function getCampListComplete(response) {
-						console.log(response.data);
+					function getCampListComplete (response) {
 						return response.data;
 					}
 
-					function getCampListFailed(error) {
+					function getCampListFailed (error) {
 						console.log('error', error);
 					}
 			}
-
-		} // end of factory
+		}
 }());
