@@ -7,6 +7,8 @@
 
     function controller(campListFactory, rx) {
         var vm = this;
+        vm.time = Rx.Observable.interval(1000).take(50);
+
         // vm.message = "hello from a component controller!";
 
         // vm.changeMessage = function () {
