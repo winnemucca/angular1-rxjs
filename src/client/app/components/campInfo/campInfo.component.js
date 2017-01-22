@@ -15,8 +15,10 @@
         //     vm.message = "new message";
         // }
 
+        vm.info = getCampingInfo();
+
+
         vm.$onInit = function () {
-            vm.info = getCampingInfo();
             vm.time = Rx.Observable.interval(1000).take(50);
             console.log(vm.info);
         }
@@ -34,9 +36,9 @@
     }
     angular.module('campSpot.components.campInfo')
            .component("campInfo", {
-            templateUrl: "/src/client/app/components/campInfo/campInfo.component.html",
-            controllerAs: "vm",
-            controller: ['campListFactory',controller]
+                templateUrl: "/src/client/app/components/campInfo/campInfo.component.html",
+                controllerAs: "vm",
+                controller: ['campListFactory',controller]
            })
 })();
 
