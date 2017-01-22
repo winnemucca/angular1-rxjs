@@ -5,7 +5,7 @@
 
     }
 
-    function controller(campListFactory) {
+    function controller(campListFactory, rx) {
         var vm = this;
         // vm.message = "hello from a component controller!";
 
