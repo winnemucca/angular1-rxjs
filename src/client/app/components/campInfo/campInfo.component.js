@@ -15,12 +15,18 @@
         //     vm.message = "new message";
         // }
 
-        vm.info = getCampingInfo();
-
+        vm.data = getCampingInfo().then(function (data) {
+                    console.log(data);
+                    vm.list = data;
+                })
+        console.log(vm.data);
 
         vm.$onInit = function () {
             vm.time = Rx.Observable.interval(1000).take(50);
-            console.log(vm.info);
+            getCampingInfo().then(function (data) {
+                console.log(data);
+                vm.list = data;
+            })
         }
 
       
@@ -29,7 +35,6 @@
             return campListFactory.getCampList()
                     .then(function (data) {
                         vm.campingInfo = data;
-                        console.log('vm.campingInfo',vm.campingInfo);
                         return vm.campingInfo;
                     })
         }
